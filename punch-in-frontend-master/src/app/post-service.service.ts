@@ -11,10 +11,18 @@ export class PostServiceService {
 
   }
   public punchinpostrequest(ip):Observable<any>{
-    return this.http.post("http://localhost:8080/in",ip);
+    return this.http.post("/in",ip);
   }
   
   public punchoutpostrequest(ip):Observable<any>{
-    return this.http.post("http://localhost:8080/out",ip);
+    return this.http.post("/out",ip);
   }
+  public checkDistance(lat,long):Observable<any>{
+    let obj={
+      "lat":lat,
+      "long":long
+    }
+    return this.http.post("/check",obj);
+  }
+  
 }

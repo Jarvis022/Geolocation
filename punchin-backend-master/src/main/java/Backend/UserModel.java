@@ -1,7 +1,5 @@
 package Backend;
 
-
-
 public class UserModel {
 
 
@@ -24,6 +22,3 @@ public class UserModel {
         this.IP = IP;
     }
 }
-
-
-

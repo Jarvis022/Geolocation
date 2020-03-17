@@ -1,0 +1,21 @@
+{
+      "/in": {
+      "target": "http://localhost:8080/in",
+      "secure": false,
+      "changeOrigin": "true",
+      "pathRewrite": {"^/in": ""}
+    },
+    "/out": {
+        "target": "http://localhost:8080/out",
+        "secure": false,
+        "changeOrigin": "true",
+        "pathRewrite": {"^/out": ""}
+      },
+        "/check": {
+        "target": "http://localhost:8080/check",
+        "secure": false,
+        "changeOrigin": "true",
+        "pathRewrite": {"^/check": ""}
+      }
+      
+  }

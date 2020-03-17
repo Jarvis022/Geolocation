@@ -22,10 +22,13 @@ export class AppComponent {
   subscription: Subscription;
   
   constructor(private ip:IpServiceService,private postR:PostServiceService,){}
-  ipAdd:string;  
+  ipAdd:string;
+
   // this.subscription=source.subscribe(val=>this.getLocation());
+  
   getLocation(){
-  // this.currentDistance=true;
+  
+    // this.currentDistance=true;
     //console.log("in funct");
     
   if (navigator.geolocation) {
@@ -33,16 +36,10 @@ export class AppComponent {
     console.log(position.coords)
     let currLat=position.coords.latitude/57.2977951;
     let currLong=position.coords.longitude/57.2977951;
-    let dLat=currLat-this.hydLat;
-    let dLong=currLong-this.hydlong;
-    let ans=angularMath.powerOfNumber(angularMath.sinNumber(dLat/2),2)+angularMath.cosNumber(this.hydLat)*angularMath.cosNumber(currLat)*angularMath.powerOfNumber(angularMath.sinNumber(dLong/2),2)
-    ans=2* angularMath.asinNumber(angularMath.powerOfNumber(ans,0.5));
-    ans=ans*6371/1000;
-    
-    if(ans<50){
-      this.currentDistance=true;
-
-    }
+    this.postR.checkDistance(currLat,currLong).subscribe((res:any)=>{
+      console.log(res);
+      this.currentDistance=res;
+    })
   });
   } else {
     alert("Geolocation is not supported by this browser.");
